@@ -1,0 +1,89 @@
+<div class="w-100 h-100 d-flex flex-column align-items-center">
+  <section class="mt-5 container text-light bg-dark w-50 h-50">
+    <div class="mt-4 w-100 h-auto p-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tasks</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let todo of todos; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ todo.task }}
+            </td>
+            <td>{{ todo.done }}</td>
+            <td>{{ todo.date | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!--? Modal -->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add a Task</h4>
+      <button
+        type="button"
+        class="btn-close btn-sm"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="todosForm"
+        class="needs-validation d-flex flex-column justify-content-center align-items-center"
+        novalidate
+      >
+        <div class="form-group d-flex flex-column w-100">
+          <label for="task">Task</label>
+          <input
+            formControlName="task"
+            type="text"
+            class="form-control"
+            [ngClass]="{
+              'border border-danger is-invalid': task?.invalid && task?.touched
+            }"
+            id="task"
+            placeholder="Enter a Task"
+            required
+          />
+          <div *ngIf="task?.invalid && task?.touched">
+            <span class="text-danger">Please Write a Task</span>
+          </div>
+        </div>
+        <button
+          [disabled]="this.task?.errors"
+          (click)="modal.dismiss('Cross click')"
+          type="submit"
+          class="btn btn-primary mt-2 addTodo"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-light"
+        (click)="modal.close('Close click')"
+      >
+        Close
+      </button>
+    </div>
+  </ng-template>
+
+  <button
+    (click)="openVerticallyCentered(content)"
+    class="btn btn-primary mt-4"
+  >
+    Add Todo
+  </button>
+</div>
