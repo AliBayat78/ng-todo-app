@@ -64,6 +64,10 @@ export class TodosComponent {
     return this.todosForm.get('task');
   }
 
+  onTodoDoneToggled(index: number) {
+    this.todos[index].done = !this.todos[index].done;
+  }
+
   onSubmit() {
     if (this.todosForm.valid) {
       const newTodo: Todos = {
