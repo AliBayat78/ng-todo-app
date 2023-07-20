@@ -1,13 +1,13 @@
 <div class="w-100 h-100 d-flex flex-column align-items-center">
   <section
-    class="mt-5 container text-light bg-darkPurple rounded w-50 h-auto overflow-hidden"
+    class="mt-5 container text-light bg-darkPurple rounded w-lg-50 h-auto overflow-hidden"
   >
     <div
-      class="containerDiv mt-4 w-100 p-4 d-flex flex-column justify-content-around"
+      class="containerDiv mt-4 w-100 p-xs-4 d-flex flex-column justify-content-around"
     >
       <table>
         <thead class="bg-purple">
-          <tr class="bg-lightPurple p-4 fs-4 fw-bold text-dark">
+          <tr class="bg-lightPurple fs-xl-4 fw-bold text-dark">
             <th scope="col">#</th>
             <th scope="col">Tasks</th>
             <th class="text-center" scope="col">Completed</th>
@@ -16,11 +16,11 @@
         </thead>
         <tbody>
           <tr
-            class="bg-lightPurple p-4 fs-5 fw-bold"
+            class="bg-lightPurple fs-xs-3 fw-xs-bold"
             *ngFor="let todo of todos; index as i"
           >
             <th class="text-darkPurple" scope="row">{{ i + 1 }}</th>
-            <td class="fw-bold" [class.task-done]="todo.done">
+            <td class="fw-xs-bold" [class.task-done]="todo.done">
               {{
                 todo.task.length > 20
                   ? todo.task.substring(0, 20) + "..."
@@ -50,8 +50,7 @@
         </ngb-pagination>
 
         <select
-          class="form-select"
-          style="width: auto"
+          class="form-select mb-4 selectCustomStyle"
           [(ngModel)]="pageSize"
           (ngModelChange)="refreshTodos()"
         >

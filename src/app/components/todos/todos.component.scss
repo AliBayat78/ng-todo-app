@@ -37,8 +37,34 @@ td {
   padding: 1rem 0 1rem 1rem;
 }
 
-input[type="checkbox"] {
-  width: 24px;
-  height: 24px;
-  padding: 5px;
+.selectCustomStyle {
+  width: auto;
+}
+.form-select {
+  font-size: 1rem;
+}
+
+@media (max-width: 420px) {
+  th,
+  td {
+    padding: 0;
+  }
+  section {
+    width: 95%;
+  }
+
+  .selectCustomStyle {
+    width: 120px;
+  }
+  .form-select {
+    font-size: 0.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+  }
 }
