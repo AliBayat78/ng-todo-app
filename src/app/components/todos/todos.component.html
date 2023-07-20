@@ -1,11 +1,13 @@
 <div class="w-100 h-100 d-flex flex-column align-items-center">
-  <section class="mt-5 container text-light bg-dark w-50 h-50 overflow-hidden">
+  <section
+    class="mt-5 container text-light bg-darkPurple rounded w-50 h-auto overflow-hidden"
+  >
     <div
       class="containerDiv mt-4 w-100 p-4 d-flex flex-column justify-content-around"
     >
-      <table class="table table-striped">
-        <thead>
-          <tr>
+      <table>
+        <thead class="bg-purple">
+          <tr class="bg-lightPurple p-4 fs-4 fw-bold text-dark">
             <th scope="col">#</th>
             <th scope="col">Tasks</th>
             <th class="text-center" scope="col">Completed</th>
@@ -13,9 +15,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let todo of todos; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td [class.task-done]="todo.done">
+          <tr
+            class="bg-lightPurple p-4 fs-5 fw-bold"
+            *ngFor="let todo of todos; index as i"
+          >
+            <th class="text-darkPurple" scope="row">{{ i + 1 }}</th>
+            <td class="fw-bold" [class.task-done]="todo.done">
               {{
                 todo.task.length > 20
                   ? todo.task.substring(0, 20) + "..."
